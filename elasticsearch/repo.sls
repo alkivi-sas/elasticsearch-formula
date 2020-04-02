@@ -6,9 +6,10 @@
   {%- set repo_url = 'http://packages.elastic.co/elasticsearch/2.x' %}
 {%- endif %}
 
-{%- if elasticsearch.major_version >= 5 and grains['os_family'] == 'Debian' %}
-apt-transport-https:
-  pkg.installed
+{%- if elasticsearch.major_version == 5 and grains['os_family'] == 'Debian' %}
+elasticsearch-apt-transport-https:
+  pkg.installed:
+    - name: apt-transport-https
 {%- endif %}
 
 elasticsearch_repo:
